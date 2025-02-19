@@ -1,5 +1,7 @@
 // server.mjs
-import { createServer } from 'node:http';
+import { createServer } from 'http';
+import './config/db.cjs';
+import connect from './config/db.cjs'
 
 const server = createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
