@@ -8,7 +8,7 @@ dotenv.config(); // Charger les variables d'environnement
 // fonction pour generer le token
 const createtoken = (_id) => {
     const jwtkey = process.env.JWT_KEY;
-    return jwt.sign({ _id }, jwtkey, { expiresIn: '1h' }); // Crée le token
+    return jwt.sign({ _id }, jwtkey, { expiresIn: '1h' }); 
 }
 
 class Users {
@@ -102,7 +102,7 @@ class Users {
 
             await User.destroy();
     
-            res.status(200).json({ message: "Utilisateur supprimer"});
+            res.status(204).json({ message: "Utilisateur supprimer"});
         }catch(error){
             console.log(error);
             res.status(500).json(error);
