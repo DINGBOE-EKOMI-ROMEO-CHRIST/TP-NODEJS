@@ -1,16 +1,18 @@
-// server.mjs
 import { createServer } from 'http';
 import './config/db.cjs';
-import connect from './config/db.cjs'
+import express from 'express';
+import cors from 'cors';
+import userRoutes from './Routes/userRoutes.mjs';
+import users from './Controllers/UsersController.mjs';
 
-const server = createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Hello World!\n');
+const app = express();
+app.use(cors()); 
+app.use(express.json());
+app.use('/api/v1/users', userRoutes)
+
+app.listen(3000, '127.0.0.1', () => {
+  console.log('serveur en ecoute sur le port 3000');
 });
 
-// starts a simple http server locally on port 3000
-server.listen(3000, '127.0.0.1', () => {
-  console.log('Listening on 127.0.0.1:3000');
-});
 
-// run with `node server.mjs`
+;
