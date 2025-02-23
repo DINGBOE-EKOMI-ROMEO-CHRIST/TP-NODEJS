@@ -13,14 +13,14 @@ http://localhost:3000/api/v1
 
   **URL**: `http://localhost:3000/api/v1/users/register`
   **Body**:
-        ```json
-        {
-            "name": "John Doe",
-            "email": "john@example.com",
-            "password": "password123",
-            "salle": 1
-        }
-        ```
+  ```json
+  {
+      "name": "John Doe",
+      "email": "john@example.com",
+      "password": "password123",
+      "salle": 1
+  }
+  ```
 </details>
   
 <details>
@@ -28,12 +28,12 @@ http://localhost:3000/api/v1
 
   **URL**: `http://localhost:3000/api/v1/users/login`
   **Body**:
-    ```json
-    {
-        "email": "john@example.com",
-        "password": "password123"
-    }
-    ```
+  ```json
+  {
+      "email": "john@example.com",
+      "password": "password123"
+  }
+  ```
 
 </details>
 
@@ -42,15 +42,15 @@ http://localhost:3000/api/v1
 
   **URL**: `http://localhost:3000/api/v1/users/update/{id}`
   **Body**:
-    ```json
-    {
-        "name": "John Updated",
-        "email": "john_updated@example.com",
-        "password": "newpassword123",
-        "role": "teacher",
-        "salle": 2
-    }
-    ```
+  ```json
+  {
+      "name": "John Updated",
+      "email": "john_updated@example.com",
+      "password": "newpassword123",
+      "role": "teacher",
+      "salle": 2
+  }
+  ```
 </details>
 <details>
   <summary>Recuperer tous les utilisateur (GET)</summary>
@@ -77,12 +77,12 @@ http://localhost:3000/api/v1
 
   **URL**: `http://localhost:3000/api/v1/projectors`
   **Body**:
-        ```json
-        {
-            "nom_projecteur": "acer",
-            "disponibilite": false
-        }
-        ```
+  ```json
+  {
+      "nom_projecteur": "acer",
+      "disponibilite": false
+  }
+  ```
 </details>
 
 <details>
@@ -96,12 +96,12 @@ http://localhost:3000/api/v1
 
   **URL**: `http://localhost:3000/api/v1/projectors/{id}`
   **Body**:
-        ```json
-        {
-            "nom_projecteur": "acer",
-            "disponibilite": true
-        }
-        ```
+  ```json
+  {
+      "nom_projecteur": "acer",
+      "disponibilite": true
+  }
+  ```
 </details>
 
 <details>
