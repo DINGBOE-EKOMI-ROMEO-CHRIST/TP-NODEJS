@@ -121,7 +121,7 @@ http://localhost:3000/api/v1
   ```json
       {
       "id": 2,
-      "id_Projecteur":2,
+      "id_Projecteur":1,
       "id_salle": 1,
       "Heure_debut_reservation": "2025-12-10",
       "Heure_fin_reservation": "2025-12-10"

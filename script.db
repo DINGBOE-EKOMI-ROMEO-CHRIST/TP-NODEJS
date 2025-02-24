@@ -38,6 +38,14 @@ CREATE TABLE Reservations (
     createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (id) REFERENCES Users (id),
-    FOREIGN KEY (id_Projecteur) REFERENCES Projecteur(id_Projecteur),
+    FOREIGN KEY (id_Projecteur) REFERENCES Projecteurs(id_Projecteur),
     FOREIGN KEY (id_salle) REFERENCES Salle(id_salle)
 );
+
+INSERT INTO Salle (Nom_salle) VALUES 
+('L1_IRT'), 
+('L2_IRT'), 
+('L3_IRT'), 
+('L1_Gestion'), 
+('L2_Gestion'), 
+('L3_Gestion');
