@@ -11,11 +11,11 @@ const Projector = sequelize.define("Projecteur", {
         primaryKey: true,
         autoIncrement: true,
      },
-    nom_projecteur: {
+    nom_Projecteur: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    disponibilite: {
+    Disponibilite: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
     } 

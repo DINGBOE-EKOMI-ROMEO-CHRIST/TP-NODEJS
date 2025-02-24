@@ -79,8 +79,8 @@ http://localhost:3000/api/v1
   **Body**:
   ```json
   {
-      "nom_projecteur": "acer",
-      "disponibilite": false
+      "nom_Projecteur": "acer",
+      "Disponibilite": false
   }
   ```
 </details>
@@ -98,8 +98,8 @@ http://localhost:3000/api/v1
   **Body**:
   ```json
   {
-      "nom_projecteur": "acer",
-      "disponibilite": true
+      "nom_Projecteur": "acer",
+      "Disponibilite": true
   }
   ```
 </details>
@@ -108,4 +108,35 @@ http://localhost:3000/api/v1
   <summary>Supprimer un projecteur (DELETE)</summary>
 
   **URL**: `http://localhost:3000/api/v1/projectors/{id}`
+</details>
+
+
+## Routes Reservations
+
+<details>
+  <summary>Enregistrement d'une reservation (POST)</summary>
+
+  **URL**: `http://localhost:3000/api/v1/reservations`
+  **Body**:
+  ```json
+      {
+      "id": 2,
+      "id_Projecteur":2,
+      "id_salle": 1,
+      "Heure_debut_reservation": "2025-12-10",
+      "Heure_fin_reservation": "2025-12-10"
+    }
+  ```
+</details>
+
+<details>
+  <summary>Lister les reservation(GET)</summary>
+
+  **URL**: `http://localhost:3000/api/v1/reservations`
+</details>
+
+<details>
+  <summary>Supprimer une reservation (DELETE)</summary>
+
+  **URL**: `http://localhost:3000/api/v1/reservations/{id}`
 </details>

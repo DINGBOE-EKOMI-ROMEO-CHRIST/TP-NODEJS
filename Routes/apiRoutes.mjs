@@ -1,6 +1,7 @@
 import express from 'express';
 import users from '../Controllers/UsersController.mjs';
 import projecteur from '../Controllers/ProjectorController.mjs';
+import reservation from '../Controllers/ReservationController.mjs'
 
 const router = express.Router();
 
@@ -16,5 +17,9 @@ router.post('/projectors', projecteur.register);
 router.get('/projectors', projecteur.index);
 router.put('/projectors/:ProjectorId', projecteur.update);
 router.delete('/projectors/:ProjectorId', projecteur.destroy);
+
+router.post('/reservations', reservation.reserver);
+router.get('/reservations', reservation.index);
+router.delete('/reservations/:ReservationId', reservation.destroy);
 
 export default router;

@@ -1,16 +1,18 @@
+import { BOOLEAN } from 'sequelize';
 import ProjectorModel from '../Models/ProjectorModel.mjs';
 
 class Projector{
 
     // fonction pour enregistrer un projecteur
     register = async(req, res) =>{
-        const {nom_projecteur, disponibilite} = req.body
+        const {nom_Projecteur, Disponibilite} = req.body
 
-        if(!nom_projecteur || !disponibilite) return res.status(400).json("tous les champs sont requis");
+        // la condition !== "boolean" s'assure que disponibilite soit un boolean car sans cette condition le if nous renvoie false et le code ne s'execute pas 
+        if(!nom_Projecteur || typeof Disponibilite !== "boolean" ) return res.status(400).json("tous les champs sont requis");
 
         const newProjecteur = await ProjectorModel.create({
-            nom_projecteur,
-            disponibilite,
+            nom_Projecteur,
+            Disponibilite,
         })
         return res.status(201).json({ message: "Projecteur créé avec succès", projecteur: newProjecteur });
     }
@@ -31,7 +33,7 @@ class Projector{
         try{
             const ProjectorId = req.params.ProjectorId;
 
-            const { nom_projecteur, disponibilite} = req.body;
+            const { nom_Projecteur, Disponibilite} = req.body;
 
             const Projector = await ProjectorModel.findByPk(ProjectorId);
 
@@ -39,8 +41,8 @@ class Projector{
                 return res.status(404).json("Projecteur non trouvé");
             }
     
-            if (nom_projecteur) Projector.nom_projecteur = nom_projecteur;
-            if (disponibilite) Projector.disponibilite = disponibilite;
+            if (nom_Projecteur) Projector.nom_Projecteur = nom_Projecteur;
+            if (Disponibilite) Projector.Disponibilite = Disponibilite;
         
             await Projector.save();
     
