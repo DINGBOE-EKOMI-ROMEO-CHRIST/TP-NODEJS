@@ -120,7 +120,7 @@ http://localhost:3000/api/v1
   **Body**:
   ```json
       {
-      "id": 2,
+      "id": 1,
       "id_Projecteur":1,
       "id_salle": 1,
       "Heure_debut_reservation": "2025-12-10",
