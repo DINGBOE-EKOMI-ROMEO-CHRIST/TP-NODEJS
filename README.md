@@ -6,69 +6,137 @@
 http://localhost:3000/api/v1
 ```
 
-## Endpoints
+## Routes Utilisateurs
 
-### 1. **Register**
+<details>
+  <summary>Enregistrement d'un utilisateur (POST)</summary>
 
-**POST** `http://localhost:3000/api/v1/users/register`
+  **URL**: `http://localhost:3000/api/v1/users/register`
+  **Body**:
+  ```json
+  {
+      "name": "John Doe",
+      "email": "john@example.com",
+      "password": "password123",
+      "salle": 1
+  }
+  ```
+</details>
+  
+<details>
+ <summary>Connexion a un compte utilisateur (POST)</summary>
 
-Cette route permet d'enregistrer un nouvel utilisateur.
+  **URL**: `http://localhost:3000/api/v1/users/login`
+  **Body**:
+  ```json
+  {
+      "email": "john@example.com",
+      "password": "password123"
+  }
+  ```
 
-#### Request Body
+</details>
 
-```json
-{
-    "name": "John Doe",
-    "email": "john@example.com",
-    "password": "password123",
-    "salle": 1
-}
-```
+<details>
+ <summary>Mis a jour d'un utilisateur (PUT)</summary>
 
-### 2. **Login**
+  **URL**: `http://localhost:3000/api/v1/users/update/{id}`
+  **Body**:
+  ```json
+  {
+      "name": "John Updated",
+      "email": "john_updated@example.com",
+      "password": "newpassword123",
+      "role": "teacher",
+      "salle": 2
+  }
+  ```
+</details>
+<details>
+  <summary>Recuperer tous les utilisateur (GET)</summary>
 
-**POST** `http://localhost:3000/api/v1/users/login`
+  **URL**: `http://localhost:3000/api/v1/users/`
+</details>
 
-Cette route permet à un utilisateur de se connecter.
+<details>
+  <summary>Recuperer un utilisateur avec son id(GET)</summary>
 
-#### Request Body
+  **URL**: `http://localhost:3000/api/v1/users/{id}`
+</details>
 
-```json
-{
-    "email": "john@example.com",
-    "password": "password123"
-}
-```
-### 3. **Update a User**
+<details>
+  <summary>Supprimer un utilisateur avec son id (DELETE)</summary>
 
-**PUT** `http://localhost:3000/api/v1/users/update/{id}`
+  **URL**: `http://localhost:3000/api/v1/users/delete/{id}`
+</details>
 
-Cette route permet de mettre à jour les informations d'un utilisateur.
-#### Request Body
+## Routes Projecteurs
 
-```json
-{
-    "name": "John Updated",
-    "email": "john_updated@example.com",
-    "password": "newpassword123",
-    "role": "teacher",
-    "salle": 2
-}
-```
-### 4. **Recuperer tous les Users**
+<details>
+  <summary>Enregistrement d'un projecteur (POST)</summary>
 
-**GET** `http://localhost:3000/api/v1/users/`
+  **URL**: `http://localhost:3000/api/v1/projectors`
+  **Body**:
+  ```json
+  {
+      "nom_Projecteur": "acer",
+      "Disponibilite": false
+  }
+  ```
+</details>
 
-Cette route permet de récupérer la liste de tous les utilisateurs.
+<details>
+  <summary>Lister les projecteurs disponible (GET)</summary>
 
-### 5. **Recuperer un utilisateur avec son ID**
+  **URL**: `http://localhost:3000/api/v1/projectors`
+</details>
 
-**GET** `http://localhost:3000/api/v1/users/{id}`
+<details>
+  <summary>Modifier l'etat d'un projecteur (PUT)</summary>
 
-Cette route permet de récupérer les données d'un utilisateur spécifique par son ID.
+  **URL**: `http://localhost:3000/api/v1/projectors/{id}`
+  **Body**:
+  ```json
+  {
+      "nom_Projecteur": "acer",
+      "Disponibilite": true
+  }
+  ```
+</details>
 
-### 6. **Delete a User**
+<details>
+  <summary>Supprimer un projecteur (DELETE)</summary>
 
-**DELETE** `http://localhost:3000/api/v1/users/delete/{id}`
+  **URL**: `http://localhost:3000/api/v1/projectors/{id}`
+</details>
 
-Cette route permet de supprimer un utilisateur en fonction de son ID.
+
+## Routes Reservations
+
+<details>
+  <summary>Enregistrement d'une reservation (POST)</summary>
+
+  **URL**: `http://localhost:3000/api/v1/reservations`
+  **Body**:
+  ```json
+      {
+      "id": 1,
+      "id_Projecteur":1,
+      "id_salle": 1,
+      "Heure_debut_reservation": "2025-12-10",
+      "Heure_fin_reservation": "2025-12-10"
+    }
+  ```
+</details>
+
+<details>
+  <summary>Lister les reservation(GET)</summary>
+
+  **URL**: `http://localhost:3000/api/v1/reservations`
+</details>
+
+<details>
+  <summary>Supprimer une reservation (DELETE)</summary>
+
+  **URL**: `http://localhost:3000/api/v1/reservations/{id}`
+</details>
