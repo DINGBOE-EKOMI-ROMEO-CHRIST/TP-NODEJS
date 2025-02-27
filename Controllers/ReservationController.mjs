@@ -1,3 +1,4 @@
+import Projector from '../Models/ProjectorModel.mjs';
 import ReservationModel from '../Models/ReservationModel.mjs';
 
 class Reservation{
@@ -5,6 +6,7 @@ class Reservation{
     // fonction pour reserver un projecteur
     reserver = async(req, res) => {
         try{
+            //id -> id user
              const {id, id_Projecteur, id_salle, Heure_debut_reservation, Heure_fin_reservation} = req.body;
 
              if(!id || !id_Projecteur || !id_salle || !Heure_debut_reservation || !Heure_fin_reservation) return res.status(400).json("tous les champs sont requis");

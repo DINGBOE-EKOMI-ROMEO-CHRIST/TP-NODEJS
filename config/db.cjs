@@ -1,18 +1,21 @@
-const mysql = require('mysql');
+const mysql = require("mysql");
+const dotenv = require("dotenv");
 
-const connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'nodedatabase'
+dotenv.config();
+
+const db = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
 });
 
-connection.connect((err) => {
+db.connect((err) => {
   if (err) {
-    console.error('Database connection failed:', err.stack);
+    console.error("Erreur de connexion à la base de données : ", err);
     return;
   }
-  console.log('Connected to database.');
+  console.log("Connecté à la base de données MySQL");
 });
 
-module.exports = connection;
+module.exports = db;
