@@ -53,6 +53,22 @@ class Projector{
         }
     }
 
+    // fonction pour afficher un projecteur
+   /* show = async(req, res) => {
+        try{
+            const ProjectorId = req.params.ProjectorId;
+            const Projector = await ProjectorModel.findByPk(ProjectorId);
+
+            if (!Projector) {
+                return res.status(404).json("projecteur non trouvé");
+            }
+            res.status(200).json(Projector);
+        }catch(error){
+            console.log(error);
+            res.status(500).json(error);
+        }
+    }*/
+
     // supprimer un projecteur
     destroy = async(req, res) => {
         try{
