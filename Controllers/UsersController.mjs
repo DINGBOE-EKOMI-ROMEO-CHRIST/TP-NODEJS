@@ -166,6 +166,26 @@ class Users {
             res.status(500).json(error);
         }
     }
+
+    profile = async (req, res) => {
+        try {
+            const userId = req.user._id; // Récupérer l'ID à partir du token
+            const user = await UserModel.findByPk(userId, {
+                attributes: ['id', 'name', 'email', 'role', 'salle'] // Sélectionner uniquement les champs nécessaires
+            });
+    
+            if (!user) {
+                return res.status(404).json({ message: "Utilisateur non trouvé" });
+            }
+    
+            res.status(200).json(user);
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ message: "Erreur serveur", error });
+        }
+    }
+    
+    
 }
 
 const users = new Users();

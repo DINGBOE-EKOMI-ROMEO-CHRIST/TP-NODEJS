@@ -73,5 +73,6 @@ router.delete('/reservations/:ReservationId',
     myMiddlewares.checkRole(['admin', 'student', 'teacher']), 
     reservation.destroy
 );
+router.get('/profile',myMiddlewares.verificationToken, users.profile);
 
 export default router;
