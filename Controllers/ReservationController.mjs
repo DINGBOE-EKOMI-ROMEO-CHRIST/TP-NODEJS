@@ -18,6 +18,14 @@ class Reservation{
                 Heure_debut_reservation,
                 Heure_fin_reservation
              });
+            
+            // 
+            const projecteur = await Projector.findByPk(id_Projecteur);
+            if (!projecteur.Disponibilite) {
+                return res.status(400).json({ error: "Ce projecteur est déjà réservé" });
+            }
+            await projecteur.update({ Disponibilite: false });
+
             return res.status(201).json({ message: "Reservation créé avec succès", reservation: newResevation });
 
         }catch(error){
