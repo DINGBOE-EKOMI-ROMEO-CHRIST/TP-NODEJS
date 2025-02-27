@@ -26,7 +26,6 @@ router.post('/users/login', users.login);
 router.put('/users/update/:UserId', 
     myMiddlewares.verificationToken, 
     myMiddlewares.checkRole(['admin']),
-    //myMiddlewares.checkSelfModification,  // Vérifie si l'utilisateur peut modifier son propre compte
     users.update
 );
 
@@ -34,7 +33,6 @@ router.put('/users/update/:UserId',
 router.delete('/users/delete/:UserId', 
     myMiddlewares.verificationToken, 
     myMiddlewares.checkRole(['admin']),
-    //myMiddlewares.checkSelfModification,  // Vérifie si l'utilisateur peut supprimer son propre compte
     users.destroy
 );
 
@@ -44,7 +42,9 @@ router.post('/projectors',
     myMiddlewares.checkRole(['admin', ]), 
     projecteur.register
 );
-router.get('/projectors', projecteur.index);
+router.get('/projectors', myMiddlewares.verificationToken,
+     myMiddlewares.checkRole(['admin', 'student', 'teacher']),
+     projecteur.index);
 //router.get('/projectors/:ProjectorId', projecteur.show);
 router.put('/projectors/:ProjectorId', 
     myMiddlewares.verificationToken, 
@@ -73,5 +73,8 @@ router.delete('/reservations/:ReservationId',
     myMiddlewares.checkRole(['admin', 'student', 'teacher']), 
     reservation.destroy
 );
+router.get('/profile',myMiddlewares.verificationToken,
+    myMiddlewares.checkRole(['admin','student','teacher']),
+    users.profile);
 
 export default router;

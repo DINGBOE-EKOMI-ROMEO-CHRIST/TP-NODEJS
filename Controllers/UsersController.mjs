@@ -71,9 +71,9 @@ class Users {
             }
 
              // Vérification si l'utilisateur est en train de modifier son propre compte ou si c'est un admin
-            if (req.user.id !== User.id && req.user.role !== 'admin') {
+          /*  if (req.user.id !== User.id && req.user.role !== 'admin') {
                 return res.status(403).json({ message: "Vous ne pouvez pas modifier un autre utilisateur." });
-            }
+            }*/
 
             // Vérification du rôle avant de modifier
             if (role) {
@@ -116,34 +116,43 @@ class Users {
     destroy = async (req, res) => {
         try {
             const UserId = req.params.UserId;
+
+            console.log("req.user.id:", req.user.id); // Log pour déboguer
+            console.log("UserId from params:", UserId); // Log pour déboguer
     
             // Récupérer l'utilisateur par son ID
             const User = await UserModel.findByPk(UserId);
     
             if (!User) {
-                return res.status(404).json("Utilisateur non trouvé");
+                return res.status(404).json({ message: "Utilisateur non trouvé" });
             }
-            if(req.user.id === User.id) {
+            console.log("User.id from database:", User.id); // Log pour déboguer
+
+            // Vérifier si l'utilisateur connecté essaie de supprimer son propre compte
+            if (req.user.id === User.id) {
                 await User.destroy();
-            return res.status(204).json({ message: "Votre compte a été supprimé avec succès." }); 
+                return res.status(204).json({ message: "Votre compte a été supprimé avec succès." });
             }
-            if(User.role === 'admin') {
-                return res.status(403).json({ message: "Impossible de supprimer un superadmin" });
+    
+            // Vérifier si l'utilisateur connecté est un admin
+            if (req.user.role === 'admin') {
+                // Empêcher un admin de supprimer un autre admin
+                if (User.role === 'admin') {
+                    return res.status(403).json({ message: "Un admin ne peut pas supprimer un autre admin." });
+                }
+    
+                // Autoriser l'admin à supprimer un utilisateur non-admin
+                await User.destroy();
+                return res.status(204).json({ message: "Utilisateur supprimé avec succès." });
             }
-
-            // Si ce n'est pas le superadmin et que ce n'est pas le compte de l'utilisateur connecté
-        if (req.user.role === 'admin') {
-            await User.destroy();
-            return res.status(204).json({ message: "Utilisateur supprimé" });
-        }
-
-        // Si l'utilisateur essaie de supprimer un autre compte sans être un admin
-        return res.status(403).json({ message: "Vous ne pouvez pas supprimer un autre compte." });
+    
+            // Si l'utilisateur n'est pas admin et essaie de supprimer un autre compte
+            return res.status(403).json({ message: "Vous ne pouvez pas supprimer un autre compte." });
         } catch (error) {
-            console.log(error);
-            res.status(500).json(error);
+            console.error("Erreur lors de la suppression de l'utilisateur:", error);
+            return res.status(500).json({ message: "Erreur lors de la suppression de l'utilisateur", error });
         }
-    }
+    };
 
     index = async (req, res) => {
         try {
@@ -166,6 +175,26 @@ class Users {
             res.status(500).json(error);
         }
     }
+
+    profile = async (req, res) => {
+        try {
+            const userId = req.user._id; // Récupérer l'ID à partir du token
+            const user = await UserModel.findByPk(userId, {
+                attributes: ['id', 'name', 'email', 'role', 'salle'] // Sélectionner uniquement les champs nécessaires
+            });
+    
+            if (!user) {
+                return res.status(404).json({ message: "Utilisateur non trouvé" });
+            }
+    
+            res.status(200).json(user);
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({ message: "Erreur serveur", error });
+        }
+    }
+    
+    
 }
 
 const users = new Users();

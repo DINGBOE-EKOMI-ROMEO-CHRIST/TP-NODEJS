@@ -16,16 +16,28 @@ class Projector{
         return res.status(201).json({ message: "Projecteur créé avec succès", projecteur: newProjecteur });
     }
 
-    // fonction pour lister les projecteurs
-    index = async(req, res) =>{
-        try{
-            const Projectors = await ProjectorModel.findAll();
-            res.status(200).json(Projectors);
-        }catch(error){
-            console.log(error);
-            res.status(500).json(error);
+   // Fonction pour lister les projecteurs
+   index = async (req, res) => {
+    try {
+        let projectors;
+
+        // Vérifier le rôle de l'utilisateur
+        if (req.user.role === 'student' || req.user.role === 'teacher') {
+            // Si l'utilisateur est un étudiant ou un enseignant, ne renvoyer que les projecteurs disponibles
+            projectors = await ProjectorModel.findAll({
+                where: { Disponibilite: true }
+            });
+        } else {
+            // Sinon, renvoyer tous les projecteurs
+            projectors = await ProjectorModel.findAll();
         }
+
+        res.status(200).json(projectors);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Erreur lors de la récupération des projecteurs', error });
     }
+}
     
     // fonction pour modifier etat d'un projecteur
     update = async(req, res) => {
