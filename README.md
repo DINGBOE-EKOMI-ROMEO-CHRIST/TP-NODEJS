@@ -80,7 +80,7 @@ http://localhost:3000/api/v1
   ```json
   {
       "nom_Projecteur": "acer",
-      "Disponibilite": false
+      "Disponibilite": true
   }
   ```
 </details>
@@ -123,8 +123,8 @@ http://localhost:3000/api/v1
       "id": 1,
       "id_Projecteur":1,
       "id_salle": 1,
-      "Heure_debut_reservation": "2025-12-10",
-      "Heure_fin_reservation": "2025-12-10"
+      "Heure_debut_reservation": "2025-02-27 08:00:00",
+      "Heure_fin_reservation": "2025-02-27 10:00:00"
     }
   ```
 </details>
