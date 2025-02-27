@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
-dotenv.config(); // Charger les variables d'environnement
+dotenv.config(); 
 
 // fonction pour générer le token
 const createtoken = (_id, role) => {
@@ -77,12 +77,12 @@ class Users {
 
             // Vérification du rôle avant de modifier
             if (role) {
-                // Si l'utilisateur actuel n'est pas un superadmin
+                // Si l'utilisateur actuel n'est pas un admin
                 if (req.user.role !== 'admin') {
                     return res.status(403).json({ message: "Seul un admin peut changer un rôle." });
                 }
 
-                // Si on tente de donner le rôle superadmin à un utilisateur non superadmin
+                // Si on tente de donner le rôle superadmin à un utilisateur non admin
                 if (role === 'admin' && User.role !== 'admin') {
                     return res.status(403).json({ message: "Impossible d'attribuer le rôle admin." });
                 }
