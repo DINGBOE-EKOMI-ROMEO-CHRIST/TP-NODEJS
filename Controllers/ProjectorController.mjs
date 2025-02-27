@@ -1,4 +1,3 @@
-import { BOOLEAN } from 'sequelize';
 import ProjectorModel from '../Models/ProjectorModel.mjs';
 
 class Projector{

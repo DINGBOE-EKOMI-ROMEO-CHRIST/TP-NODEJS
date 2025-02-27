@@ -49,3 +49,6 @@ INSERT INTO Salle (Nom_salle) VALUES
 ('L1_Gestion'), 
 ('L2_Gestion'), 
 ('L3_Gestion');
+
+INSERT INTO Users (name, email, password, role, salle) 
+VALUES ('admin', 'admin@test.mail', '$2b$10$sF/QIePX18k/UV2zUPoeNursyPzdUgW3uKe0bnFbzAs6uPWkPt7TC', 'admin', NULL);

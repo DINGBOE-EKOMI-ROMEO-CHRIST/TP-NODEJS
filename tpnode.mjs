@@ -1,5 +1,6 @@
 import { createServer } from 'http';
 import './config/db.cjs';
+import './config/cronJobs.mjs';
 import express from 'express';
 import cors from 'cors';
 import apiRoutes from './Routes/apiRoutes.mjs';
