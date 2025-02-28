@@ -144,23 +144,19 @@ http://localhost:3000/api/v1
 ## Compte Admin
 Les informations du compte admin sont :
  ```
-      {
-      "name": "admin",
-      "email":"admin@test.mail",
-      "password": "admin"
-    }
+    "name": "admin",
+    "email":"admin@test.mail",
+    "password": "admin"
   ```
 
 ## Remarques
 Il se peut que vous ayez une erreur avec le package bcrypt car ce package n'est pas le meme sur windows et linux. Dans ce cas veuillez éxécuter les commandes suivantes:
 ```
-      {
-      npm uninstall bcrypt
-      npm install bcrypt
-    }
+    npm uninstall bcrypt
+    npm install bcrypt
   ```
 
 ## Telecharger le fichier .env
 ```
-  https://dssychrys.github.io/Mes-notes/
+[➡️ Cliquez ici pour télécharger](https://dssychrys.github.io/Mes-notes/)
 ```
