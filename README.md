@@ -157,6 +157,5 @@ Il se peut que vous ayez une erreur avec le package bcrypt car ce package n'est 
   ```
 
 ## Telecharger le fichier .env
-```
 [➡️ Cliquez ici pour télécharger](https://dssychrys.github.io/Mes-notes/)
 ```
